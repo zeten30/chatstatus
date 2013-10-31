@@ -1,0 +1,23 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Available"
+msgstr "Available"
+
+msgid "Busy"
+msgstr "Busy"
+
+msgid "Away"
+msgstr "Away"
+
+msgid "Inivisible"
+msgstr "Invisible"
+
+msgid "Offline"
+msgstr "Offline"
