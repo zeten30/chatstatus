@@ -21,3 +21,6 @@ msgstr "Invisible"
 
 msgid "Offline"
 msgstr "Offline"
+
+msgid "NoAccount"
+msgstr "Add new account"

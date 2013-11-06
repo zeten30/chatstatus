@@ -11,17 +11,17 @@ const Refresh = 1100;
 
 var button = null;
 var menu_actor = null;
-var timer_cs = null;
+var timer_start = null;
 
 
 function enable() {
-  timer_cs = Mainloop.timeout_add(Refresh, function () {
+  timer_start = Mainloop.timeout_add(500, function () {
 	button = new PanelMenu.Button(0.0);
 	_set_panel_display(button);
 	_build_menu(button);
 	
 	Main.panel.addToStatusArea("chatstatus", button, 0, "right");
-	timer_cs = null;
+	timer_start = null;
   });
 }
 
@@ -29,7 +29,7 @@ function disable() {
     if (button) button.destroy();
     button = null;
     menu_actor = null;
-    timer_cs = null;
+    timer_start = null;
 }
 
 function init() {
@@ -41,7 +41,6 @@ function init() {
     theme.append_search_path(ExtensionUtils.getCurrentExtension().path + "/icons");
 }
 
-
 function _set_panel_display(button) {
     if (menu_actor) button.actor.remove_actor(menu_actor);
 	
@@ -50,16 +49,21 @@ function _set_panel_display(button) {
     button.actor.add_actor(icon);
     menu_actor = icon;
 
-	//Call again - watch status changes
-	Mainloop.timeout_add(Refresh, function () { _set_panel_display(button); });
+	//Recurse
+	Mainloop.timeout_add(Refresh * 3, function () { _set_panel_display(button); });
 }
 
 function _build_menu(button) {
+  if(_getStatus() != 'null') {
     _add_item(button, Gettext.gettext("Available"), 'available');
     _add_item(button, Gettext.gettext("Busy"), 'dnd');
     _add_item(button, Gettext.gettext("Away"), 'away');
     _add_item(button, Gettext.gettext("Invisible"), 'hidden');
     _add_item(button, Gettext.gettext("Offline"), 'offline');
+  }
+  else {
+    _add_item_run(button, Gettext.gettext("NoAccount"),'gnome-control-center online-accounts');
+  }
 }
 
 function _add_item(button, status_name, status_code) {
@@ -72,7 +76,25 @@ function _add_item(button, status_name, status_code) {
  
 	let label = new St.Label({text: status_name});
     box.add(label);
-    item.connect("activate", function () {_setStatus(status_code);});
+    item.connect("activate", function () {
+	  Mainloop.timeout_add(Refresh, function () { _set_panel_display(button); });
+	  _setStatus(status_code);
+	});
+}
+
+function _add_item_run(button, label, command) {
+    let item = new PopupMenu.PopupBaseMenuItem;
+    button.menu.addMenuItem(item);
+    let box = new St.BoxLayout({vertical: false,
+				pack_start: false,
+				style_class: "chatstatus-menu-box"});
+    item.actor.add_child(box);
+ 
+	let label = new St.Label({text: label});
+    box.add(label);
+    item.connect("activate", function () {
+	  GLib.spawn_command_line_async(command);
+	});
 }
 
 function _getAccountsList() {
@@ -97,7 +119,7 @@ function _getStatus() {
   LastStatus = LastStatus.replace(/\"/g, "");
   LastStatus = LastStatus.replace(/[()0-9]/g, "");
   LastStatus = LastStatus.trim();
-  
+ 
   return LastStatus;
 }
 

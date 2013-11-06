@@ -21,3 +21,7 @@ msgstr "Neviditelný"
 
 msgid "Offline"
 msgstr "Odpojen"
+
+msgid "NoAccount"
+msgstr "Přidat nový účet"
+
