@@ -7,22 +7,29 @@ const PopupMenu = imports.ui.popupMenu;
 const ExtensionUtils = imports.misc.extensionUtils
 const Mainloop = imports.mainloop;
 const Gettext = imports.gettext;
-const Refresh = 1100;
+const REFRESH = 2;
 
 var button = null;
 var menu_actor = null;
 var timer_start = null;
-
+var timer_loop = null;
 
 function enable() {
-  timer_start = Mainloop.timeout_add(500, function () {
+  timer_start = Mainloop.timeout_add_seconds(REFRESH, function () {
 	button = new PanelMenu.Button(0.0);
 	_set_panel_display(button);
 	_build_menu(button);
 	
 	Main.panel.addToStatusArea("chatstatus", button, 0, "right");
+	Mainloop.source_remove(timer_start);
 	timer_start = null;
   });
+
+  timer_loop = Mainloop.timeout_add_seconds(REFRESH*3, function () {
+	_set_panel_display(button);
+	return true;
+  });
+
 }
 
 function disable() {
@@ -30,27 +37,36 @@ function disable() {
     button = null;
     menu_actor = null;
     timer_start = null;
+	Mainloop.source_remove(timer_loop);
+    timer_loop = null;
 }
 
 function init() {
-    let user_locale_path = ExtensionUtils.getCurrentExtension().path + "/locale";
-    Gettext.bindtextdomain("chatstatus", user_locale_path);
-    Gettext.textdomain("chatstatus");
+  let user_locale_path = ExtensionUtils.getCurrentExtension().path + "/locale";
+  Gettext.bindtextdomain("chatstatus", user_locale_path);
+  Gettext.textdomain("chatstatus");
 
-	let theme = imports.gi.Gtk.IconTheme.get_default();
-    theme.append_search_path(ExtensionUtils.getCurrentExtension().path + "/icons");
+  let theme = imports.gi.Gtk.IconTheme.get_default();
+  theme.append_search_path(ExtensionUtils.getCurrentExtension().path + "/icons");
+
 }
 
-function _set_panel_display(button) {
+function _set_panel_display(button,set_state = "") {
     if (menu_actor) button.actor.remove_actor(menu_actor);
-	
-    let icon = new St.Icon({icon_name: 'cs-' + _getStatus(), style_class: "system-status-icon"});
 
+	var final_status;
+
+	if (set_state == "") {
+	  final_status = _getStatus();
+	}
+	else {
+	  final_status = set_state;
+	}
+
+	let icon = new St.Icon({icon_name: 'cs-' + final_status, style_class: "system-status-icon"});
     button.actor.add_actor(icon);
     menu_actor = icon;
 
-	//Recurse
-	Mainloop.timeout_add(Refresh * 3, function () { _set_panel_display(button); });
 }
 
 function _build_menu(button) {
@@ -77,8 +93,8 @@ function _add_item(button, status_name, status_code) {
 	let label = new St.Label({text: status_name});
     box.add(label);
     item.connect("activate", function () {
-	  Mainloop.timeout_add(Refresh, function () { _set_panel_display(button); });
 	  _setStatus(status_code);
+	  _set_panel_display(button,status_code); 
 	});
 }
 
