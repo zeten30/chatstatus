@@ -37,7 +37,7 @@ function disable() {
     button = null;
     menu_actor = null;
     timer_start = null;
-	Mainloop.source_remove(timer_loop);
+    Mainloop.source_remove(timer_loop);
     timer_loop = null;
 }
 
@@ -116,7 +116,10 @@ function _add_item_run(button, label, command) {
 function _getAccountsList() {
   var MCToolListShell = GLib.spawn_command_line_sync('mc-tool list');
   var AccountListTxt = new String(MCToolListShell[1]);
-  return new Array(AccountListTxt.split("\n"));
+  var Ret = new Array();
+
+  Ret = AccountListTxt.split("\n");
+  return Ret;
 }
 
 function _getStatus() {
@@ -126,16 +129,19 @@ function _getStatus() {
   var LastStatus;
 
   for (inc = 0; inc < AccListArr.length; inc++) {
-	AccName = new String(AccListArr[inc]);
-	var AccStatus = new String(GLib.spawn_command_line_sync('mc-tool show ' + AccName.replace(/,/g,""))[1]);
-	LastStatus = new String(AccStatus.match(/Current:.*/));
+    AccName = new String(AccListArr[inc]);
+
+    if(AccName.length>0) {      
+      var AccStatus = new String(GLib.spawn_command_line_sync('mc-tool show ' + AccName.replace(/,/g,""))[1]);
+      LastStatus = new String(AccStatus.match(/Current:.*/));
+    }
   }
 
   LastStatus = LastStatus.replace(/Current:/,"");
   LastStatus = LastStatus.replace(/\"/g, "");
   LastStatus = LastStatus.replace(/[()0-9]/g, "");
   LastStatus = LastStatus.trim();
- 
+
   return LastStatus;
 }
 
