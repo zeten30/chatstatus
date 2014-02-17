@@ -76,10 +76,17 @@ function _build_menu(button) {
     _add_item(button, Gettext.gettext("Away"), 'away');
     _add_item(button, Gettext.gettext("Invisible"), 'hidden');
     _add_item(button, Gettext.gettext("Offline"), 'offline');
+	_add_separator(button);
+    _add_item_run(button, Gettext.gettext("Show contact list"), 'empathy');
   }
   else {
     _add_item_run(button, Gettext.gettext("NoAccount"),'gnome-control-center online-accounts');
   }
+}
+
+function _add_separator() {
+	let item = new PopupMenu.PopupSeparatorMenuItem();
+    button.menu.addMenuItem(item);
 }
 
 function _add_item(button, status_name, status_code) {
@@ -138,6 +145,7 @@ function _getStatus() {
   }
 
   LastStatus = LastStatus.replace(/Current:/,"");
+  LastStatus = LastStatus.replace(/\".*\"/,"");
   LastStatus = LastStatus.replace(/\"/g, "");
   LastStatus = LastStatus.replace(/[()0-9]/g, "");
   LastStatus = LastStatus.trim();
