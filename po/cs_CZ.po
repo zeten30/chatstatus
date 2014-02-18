@@ -16,7 +16,7 @@ msgstr "Zaneprázdněn"
 msgid "Away"
 msgstr "Pryč"
 
-msgid "Inivisible"
+msgid "Invisible"
 msgstr "Neviditelný"
 
 msgid "Offline"
@@ -25,3 +25,5 @@ msgstr "Odpojen"
 msgid "NoAccount"
 msgstr "Přidat nový účet"
 
+msgid "ShowContactList"
+msgstr "Zobrazit kontakty"

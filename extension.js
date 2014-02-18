@@ -33,7 +33,7 @@ function enable() {
 }
 
 function disable() {
-    if (button) button.destroy();
+  if (button) button.destroy();
     button = null;
     menu_actor = null;
     timer_start = null;
@@ -52,7 +52,7 @@ function init() {
 }
 
 function _set_panel_display(button,set_state = "") {
-    if (menu_actor) button.actor.remove_actor(menu_actor);
+  if (menu_actor) button.actor.remove_actor(menu_actor);
 
 	var final_status;
 
@@ -76,8 +76,8 @@ function _build_menu(button) {
     _add_item(button, Gettext.gettext("Away"), 'away');
     _add_item(button, Gettext.gettext("Invisible"), 'hidden');
     _add_item(button, Gettext.gettext("Offline"), 'offline');
-	_add_separator(button);
-    _add_item_run(button, Gettext.gettext("Show contact list"), 'empathy');
+    _add_separator(button);
+    _add_item_run(button, Gettext.gettext("ShowContactList"), 'empathy');
   }
   else {
     _add_item_run(button, Gettext.gettext("NoAccount"),'gnome-control-center online-accounts');
@@ -86,16 +86,16 @@ function _build_menu(button) {
 
 function _add_separator() {
 	let item = new PopupMenu.PopupSeparatorMenuItem();
-    button.menu.addMenuItem(item);
+  button.menu.addMenuItem(item);
 }
 
 function _add_item(button, status_name, status_code) {
-    let item = new PopupMenu.PopupBaseMenuItem;
-    button.menu.addMenuItem(item);
-    let box = new St.BoxLayout({vertical: false,
+  let item = new PopupMenu.PopupBaseMenuItem;
+  button.menu.addMenuItem(item);
+  let box = new St.BoxLayout({vertical: false,
 				pack_start: false,
 				style_class: "chatstatus-menu-box"});
-    item.actor.add_child(box);
+  item.actor.add_child(box);
  
 	let label = new St.Label({text: status_name});
     box.add(label);
@@ -106,12 +106,12 @@ function _add_item(button, status_name, status_code) {
 }
 
 function _add_item_run(button, label, command) {
-    let item = new PopupMenu.PopupBaseMenuItem;
-    button.menu.addMenuItem(item);
-    let box = new St.BoxLayout({vertical: false,
+  let item = new PopupMenu.PopupBaseMenuItem;
+  button.menu.addMenuItem(item);
+  let box = new St.BoxLayout({vertical: false,
 				pack_start: false,
 				style_class: "chatstatus-menu-box"});
-    item.actor.add_child(box);
+  item.actor.add_child(box);
  
 	let label = new St.Label({text: label});
     box.add(label);
@@ -161,8 +161,6 @@ function _setStatus(requested_status){
   for (inc = 0; inc < AccListArr.length; inc++) {
     AccName = new String(AccListArr[inc]);
     AccName = AccName.replace(/,/g,"");
-	
-	GLib.spawn_command_line_sync('mc-tool request ' + AccName + ' ' + requested_status);
+	  GLib.spawn_command_line_sync('mc-tool request ' + AccName + ' ' + requested_status);
   }
 }
-

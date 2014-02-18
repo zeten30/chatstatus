@@ -16,7 +16,7 @@ msgstr "Busy"
 msgid "Away"
 msgstr "Away"
 
-msgid "Inivisible"
+msgid "Invisible"
 msgstr "Invisible"
 
 msgid "Offline"
@@ -24,3 +24,6 @@ msgstr "Offline"
 
 msgid "NoAccount"
 msgstr "Add new account"
+
+msgid "ShowContactList"
+msgstr "Show contact list"
