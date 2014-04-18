@@ -1,10 +1,11 @@
 {
   "shell-version": [
 	"3.8",
-	"3.10"
+	"3.10",
+	"3.12"
   ], 
   "uuid": "chatstatus@zeten30.gmail.com", 
   "name": "Chat Status", 
   "description": "Show/Change chat accounts status on main panel",
-  "version": 8
+  "version": 9
 }
