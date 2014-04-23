@@ -22,8 +22,8 @@ msgstr "Invisible"
 msgid "Offline"
 msgstr "Offline"
 
-msgid "NoAccount"
+msgid "Add new account"
 msgstr "Add new account"
 
-msgid "ShowContactList"
+msgid "Show contact list"
 msgstr "Show contact list"

@@ -77,10 +77,10 @@ function _build_menu(button) {
     _add_item(button, Gettext.gettext("Invisible"), 'hidden');
     _add_item(button, Gettext.gettext("Offline"), 'offline');
     _add_separator(button);
-    _add_item_run(button, Gettext.gettext("ShowContactList"), 'empathy');
+    _add_item_run(button, Gettext.gettext("Show contact list"), 'empathy');
   }
   else {
-    _add_item_run(button, Gettext.gettext("NoAccount"),'gnome-control-center online-accounts');
+    _add_item_run(button, Gettext.gettext("Add new account"),'gnome-control-center online-accounts');
   }
 }
 

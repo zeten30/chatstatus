@@ -22,8 +22,8 @@ msgstr "Neviditelný"
 msgid "Offline"
 msgstr "Odpojen"
 
-msgid "NoAccount"
+msgid "Add new account"
 msgstr "Přidat nový účet"
 
-msgid "ShowContactList"
+msgid "Show contact list"
 msgstr "Zobrazit kontakty"
