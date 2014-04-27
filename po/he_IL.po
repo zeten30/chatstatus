@@ -1,0 +1,36 @@
+#
+# Matanya Moses <matanya@foss.co.il>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Matanya Moses <matanya@foss.co.il>\n"
+"Language-Team: עברית <>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"PO-Revision-Date: 2014-04-27 14:00+0300\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+msgid "Available"
+msgstr "זמין"
+
+msgid "Busy"
+msgstr "עסוק"
+
+msgid "Away"
+msgstr "מרוחק"
+
+msgid "Invisible"
+msgstr "בלתי נראה"
+
+msgid "Offline"
+msgstr "מנותק"
+
+msgid "Add new account"
+msgstr "הוספת חשבון חדש"
+
+msgid "Show contact list"
+msgstr "הצגת אנשי הקשר"
