@@ -1,0 +1,31 @@
+# French translation for ChatStatus GNOME Shell extension
+# Author : Sébastien Maccagnoni-Munch <sebastien@tiramiseb.fr>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: fr_FR\n"
+"Last-Translator: Sébastien Maccagnoni-Munch <sebastien@tiramiseb.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "Busy"
+msgstr "Occupé"
+
+msgid "Away"
+msgstr "Absent"
+
+msgid "Invisible"
+msgstr "Invisible"
+
+msgid "Offline"
+msgstr "Hors ligne"
+
+msgid "Add new account"
+msgstr "Ajouter un nouveau compte"
+
+msgid "Show contact list"
+msgstr "Afficher la liste des contacts"
