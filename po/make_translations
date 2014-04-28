@@ -6,7 +6,7 @@
 # to add a translation - add the language to LINGUAS, copy
 # chatstatus.pot to a po file for the language, and then run this script
 
-for file in `cat LINGUAS`
+for file in `ls *.po | sed -e 's/.po//g'`
 do
 
 if ! [ -d ../locale/$file/LC_MESSAGES ]; then

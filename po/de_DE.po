@@ -2,28 +2,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: chatstatus 0.0.1\n"
-"Language: en_US\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Available"
-msgstr "Available"
+msgstr "Verfügbar"
 
 msgid "Busy"
-msgstr "Busy"
+msgstr "Beschäftigt"
 
 msgid "Away"
-msgstr "Away"
+msgstr "Abwesend"
 
 msgid "Invisible"
-msgstr "Invisible"
+msgstr "Unsichtbar"
 
 msgid "Offline"
 msgstr "Offline"
 
 msgid "Add new account"
-msgstr "Add new account"
+msgstr "Neues Konto"
 
 msgid "Show contact list"
-msgstr "Show contact list"
+msgstr "Buddy-Liste anzeigen"
