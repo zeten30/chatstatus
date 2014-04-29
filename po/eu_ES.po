@@ -1,0 +1,29 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: eu_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Add new account"
+msgstr "Kontu Berria"
+
+msgid "Offline"
+msgstr "Deskonektatuta"
+
+msgid "Available"
+msgstr "Eskuragarri"
+
+msgid "Away"
+msgstr "Kanpoan"
+
+msgid "Busy"
+msgstr "Lanpetuta"
+
+msgid "Invisible"
+msgstr "Ikustezin"
+
+msgid "Show contact list"
+msgstr "Lagun-Zerrenda Erakutsi"

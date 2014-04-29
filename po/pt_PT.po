@@ -1,0 +1,29 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Add new account"
+msgstr "Nova Conta"
+
+msgid "Offline"
+msgstr "Desligado"
+
+msgid "Available"
+msgstr "Disponível"
+
+msgid "Away"
+msgstr "Ausente"
+
+msgid "Busy"
+msgstr "Ocupado"
+
+msgid "Invisible"
+msgstr "Invisível"
+
+msgid "Show contact list"
+msgstr "Mostrar Lista de Contactos"

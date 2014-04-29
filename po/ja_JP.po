@@ -1,0 +1,29 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Add new account"
+msgstr "新しいアカウント"
+
+msgid "Offline"
+msgstr "オフライン"
+
+msgid "Available"
+msgstr "在席しています"
+
+msgid "Away"
+msgstr "離席中"
+
+msgid "Busy"
+msgstr "取り込み中です"
+
+msgid "Invisible"
+msgstr "隠れています"
+
+msgid "Show contact list"
+msgstr "仲間リストの表示(L)"

@@ -1,0 +1,29 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Add new account"
+msgstr "Новая учётная запись"
+
+msgid "Offline"
+msgstr "Не в сети"
+
+msgid "Available"
+msgstr "Доступен"
+
+msgid "Away"
+msgstr "Отошёл"
+
+msgid "Busy"
+msgstr "Занят"
+
+msgid "Invisible"
+msgstr "Невидимый"
+
+msgid "Show contact list"
+msgstr "Показать список собеседников"

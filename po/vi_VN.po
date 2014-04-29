@@ -1,0 +1,29 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: vi_VN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Add new account"
+msgstr "Tài khoản mới"
+
+msgid "Offline"
+msgstr "Ngoại tuyến"
+
+msgid "Available"
+msgstr "Có mặt"
+
+msgid "Away"
+msgstr "Vắng mặt"
+
+msgid "Busy"
+msgstr "Đang bận"
+
+msgid "Invisible"
+msgstr "Giấu mặt"
+
+msgid "Show contact list"
+msgstr "Hiện danh sách bạn bè"

@@ -1,0 +1,29 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: chatstatus 0.0.1\n"
+"Language: el_GR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Add new account"
+msgstr "Νέος λογαριασμός"
+
+msgid "Offline"
+msgstr "Χωρίς σύνδεση"
+
+msgid "Available"
+msgstr "Διαθέσιμος"
+
+msgid "Away"
+msgstr "Απουσιάζει"
+
+msgid "Busy"
+msgstr "Απασχολημένος"
+
+msgid "Invisible"
+msgstr "Αόρατος"
+
+msgid "Show contact list"
+msgstr "Εμφάνιση λίστας φίλων"
