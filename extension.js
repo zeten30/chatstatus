@@ -44,7 +44,6 @@ function disable() {
 function init() {
   let user_locale_path = ExtensionUtils.getCurrentExtension().path + "/locale";
   Gettext.bindtextdomain("chatstatus", user_locale_path);
-  Gettext.textdomain("chatstatus");
 
   let theme = imports.gi.Gtk.IconTheme.get_default();
   theme.append_search_path(ExtensionUtils.getCurrentExtension().path + "/icons");
@@ -71,16 +70,16 @@ function _set_panel_display(button,set_state = "") {
 
 function _build_menu(button) {
   if(_getStatus() != 'null') {
-    _add_item(button, Gettext.gettext("Available"), 'available');
-    _add_item(button, Gettext.gettext("Busy"), 'dnd');
-    _add_item(button, Gettext.gettext("Away"), 'away');
-    _add_item(button, Gettext.gettext("Invisible"), 'hidden');
-    _add_item(button, Gettext.gettext("Offline"), 'offline');
+    _add_item(button, Gettext.domain("chatstatus").gettext("Available"), 'available');
+    _add_item(button, Gettext.domain("chatstatus").gettext("Busy"), 'dnd');
+    _add_item(button, Gettext.domain("chatstatus").gettext("Away"), 'away');
+    _add_item(button, Gettext.domain("chatstatus").gettext("Invisible"), 'hidden');
+    _add_item(button, Gettext.domain("chatstatus").gettext("Offline"), 'offline');
     _add_separator(button);
-    _add_item_run(button, Gettext.gettext("Show contact list"), 'empathy');
+    _add_item_run(button, Gettext.domain("chatstatus").gettext("Show contact list"), 'empathy');
   }
   else {
-    _add_item_run(button, Gettext.gettext("Add new account"),'gnome-control-center online-accounts');
+    _add_item_run(button, Gettext.domain("chatstatus").gettext("Add new account"),'gnome-control-center online-accounts');
   }
 }
 
