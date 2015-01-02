@@ -7,7 +7,7 @@ const PopupMenu = imports.ui.popupMenu;
 const ExtensionUtils = imports.misc.extensionUtils
 const Mainloop = imports.mainloop;
 const Gettext = imports.gettext;
-const REFRESH = 2;
+const REFRESH = 3;
 const KnownStatus = ['available','away','busy','dnd','hidden','invisible','offline'];
 
 var button = null;
@@ -133,23 +133,22 @@ function _getAccountsList() {
 function _getStatus() {
 	var AccListArr = _getAccountsList();
 	var inc = 0;
-	var AccName;
-	var LastStatus;
+	var AccName = "";
+	var LastStatus = "";
 
-	for (inc = 0; inc < AccListArr.length; inc++) {
+	for (inc = 0; inc < AccListArr.length - 1 ; inc++) {
 		AccName = new String(AccListArr[inc]);
 
-		if(AccName.length>0 && (AccName.match(/irc\//) == null)) {      
+		if(_is_managable_account(AccName)) {     
 			var AccStatus = new String(GLib.spawn_command_line_sync('mc-tool show ' + AccName.replace(/,/g,""))[1]);
 			LastStatus = new String(AccStatus.match(/Current:.*/));
+			LastStatus = LastStatus.replace(/Current:/,"");
+			LastStatus = LastStatus.replace(/\".*\"/,"");
+			LastStatus = LastStatus.replace(/\"/g, "");
+			LastStatus = LastStatus.replace(/[()0-9]/g, "");
+			LastStatus = LastStatus.trim();
 		}
 	}
-
-	LastStatus = LastStatus.replace(/Current:/,"");
-	LastStatus = LastStatus.replace(/\".*\"/,"");
-	LastStatus = LastStatus.replace(/\"/g, "");
-	LastStatus = LastStatus.replace(/[()0-9]/g, "");
-	LastStatus = LastStatus.trim();
 
 	if (! _arr_contains(KnownStatus,LastStatus)) {
 		LastStatus = "custom";
@@ -162,15 +161,36 @@ function _setStatus(requested_status){
 	var inc = 0;
 	var AccName;
 
-	for (inc = 0; inc < AccListArr.length; inc++) {
+	for (inc = 0; inc < AccListArr.length - 1; inc++) {
 		AccName = new String(AccListArr[inc]);
 		AccName = AccName.replace(/,/g,"");
 		
-		if(AccName.length>0 && (AccName.match(/irc\//) == null)) {
+		if(_is_managable_account(AccName)) {
 			GLib.spawn_command_line_sync('mc-tool request ' + AccName + ' ' + requested_status);
 		}
 	}
 }
+
+function _is_managable_account(accid) {
+	var is_managable = true;
+
+	//Enabled account?
+	var AccState = new String(GLib.spawn_command_line_sync('mc-tool show ' + accid.replace(/,/g,""))[1]);
+	var AccEnabled = new String(AccState.match(/Enabled:.*/));
+	AccEnabled = AccEnabled.replace(/Enabled: /,"");
+	AccEnabled = AccEnabled.trim();
+
+	if(! accid.match(/irc\//) == null) { 
+		is_managable = false;		
+	}
+	
+	if(AccEnabled.match(/enabled/) == null) { 
+		is_managable = false;
+	}
+		
+	return is_managable;
+}
+
 
 function _arr_contains(a, obj) {
 	for (var i = 0; i < a.length; i++) {
