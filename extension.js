@@ -180,7 +180,7 @@ function _is_managable_account(accid) {
 	AccEnabled = AccEnabled.replace(/Enabled: /,"");
 	AccEnabled = AccEnabled.trim();
 
-	if(! accid.match(/irc\//) == null) { 
+	if(accid.match(/\/irc\//) != null) { 
 		is_managable = false;		
 	}
 	
