@@ -1,3 +1,8 @@
+!! Not actively developed !!
+ * Empathy seems to be dead project
+ * Gnome online accounts dropped telepathy support
+
+
 Chat Status - Gnome shell extension
 -----------------------------------
 View & change status on main panel
