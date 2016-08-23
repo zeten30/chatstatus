@@ -1,4 +1,5 @@
 !! Not actively developed !!
+----------------------------
  * Empathy seems to be dead project
  * Gnome online accounts dropped telepathy support
 
