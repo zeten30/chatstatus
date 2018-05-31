@@ -8,9 +8,10 @@
     "3.14",
     "3.16",
     "3.18",
-    "3.20"
+    "3.20",
+    "3.26"
   ],
   "url": "https://github.com/zeten30/chatstatus",
   "uuid": "chatstatus@zeten30.gmail.com",
-  "version": 18
+  "version": 19
 }

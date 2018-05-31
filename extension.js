@@ -20,7 +20,7 @@ function enable() {
 		button = new PanelMenu.Button(0.0);
 		_set_panel_display(button);
 		_build_menu(button);
-	
+
 		Main.panel.addToStatusArea("chatstatus", button, 0, "right");
 		Mainloop.source_remove(timer_start);
 		timer_start = null;
@@ -96,26 +96,26 @@ function _add_item(button, status_name, status_code) {
 				pack_start: false,
 				style_class: "chatstatus-menu-box"});
 	item.actor.add_child(box);
- 
+
 	let label = new St.Label({text: status_name});
 	box.add(label);
 	item.connect("activate", function () {
 		_setStatus(status_code);
-		_set_panel_display(button,status_code); 
+		_set_panel_display(button,status_code);
 	});
 }
 
-function _add_item_run(button, label, command) {
+function _add_item_run(button, label_text, command) {
 	let item = new PopupMenu.PopupBaseMenuItem;
 	button.menu.addMenuItem(item);
 	let box = new St.BoxLayout({vertical: false,
 				pack_start: false,
 				style_class: "chatstatus-menu-box"});
 	item.actor.add_child(box);
- 
-	let label = new St.Label({text: label});
+
+	let label = new St.Label({text: label_text});
 	box.add(label);
-	
+
 	item.connect("activate", function () {
 		GLib.spawn_command_line_async(command);
 	});
@@ -139,7 +139,7 @@ function _getStatus() {
 	for (inc = 0; inc < AccListArr.length - 1 ; inc++) {
 		AccName = new String(AccListArr[inc]);
 
-		if(_is_managable_account(AccName)) {     
+		if(_is_managable_account(AccName)) {
 			var AccStatus = new String(GLib.spawn_command_line_sync('mc-tool show ' + AccName.replace(/,/g,""))[1]);
 			LastStatus = new String(AccStatus.match(/Current:.*/));
 			LastStatus = LastStatus.replace(/Current:/,"");
@@ -164,7 +164,7 @@ function _setStatus(requested_status){
 	for (inc = 0; inc < AccListArr.length - 1; inc++) {
 		AccName = new String(AccListArr[inc]);
 		AccName = AccName.replace(/,/g,"");
-		
+
 		if(_is_managable_account(AccName)) {
 			GLib.spawn_command_line_sync('mc-tool request ' + AccName + ' ' + requested_status);
 		}
@@ -180,14 +180,14 @@ function _is_managable_account(accid) {
 	AccEnabled = AccEnabled.replace(/Enabled: /,"");
 	AccEnabled = AccEnabled.trim();
 
-	if(accid.match(/\/irc\//) != null) { 
-		is_managable = false;		
-	}
-	
-	if(AccEnabled.match(/enabled/) == null) { 
+	if(accid.match(/\/irc\//) != null) {
 		is_managable = false;
 	}
-		
+
+	if(AccEnabled.match(/enabled/) == null) {
+		is_managable = false;
+	}
+
 	return is_managable;
 }
 
